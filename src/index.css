@@ -1,0 +1,272 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Auth container styles */
+.auth-container {
+    max-width: 400px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input styles */
+input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+input::placeholder {
+    color: #a0a0a0;
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Link styles */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #764ba2;
+    transform: translateY(-1px);
+}
+
+/* Error message styles */
+.error {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Success message styles */
+.success {
+    background: linear-gradient(135deg, #51cf66, #40c057);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 5px 15px rgba(81, 207, 102, 0.3);
+}
+
+/* Dashboard styles */
+.dashboard {
+    max-width: 800px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.dashboard h1 {
+    color: #333;
+    font-size: 32px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dashboard p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.dashboard button {
+    max-width: 200px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+}
+
+.dashboard button:hover {
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+}
+
+/* Loading spinner */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .auth-container,
+    .dashboard {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+
+    .auth-container h2 {
+        font-size: 24px;
+    }
+
+    .dashboard h1 {
+        font-size: 28px;
+    }
+
+    input,
+    button {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for better accessibility */
+input:focus,
+button:focus,
+a:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .auth-container,
+    .dashboard {
+        background: white;
+        border: 2px solid #000;
+    }
+
+    input {
+        border: 2px solid #000;
+    }
+
+    button {
+        background: #000;
+        border: 2px solid #000;
+    }
+}
