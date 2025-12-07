@@ -36,25 +36,17 @@ RUN echo 'server { \
         try_files $uri $uri/ /index.html; \
     } \
     \
-    location /api { \
-        proxy_pass $BACKEND_URL; \
-        proxy_set_header Host $host; \
-        proxy_set_header X-Real-IP $remote_addr; \
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; \
-        proxy_set_header X-Forwarded-Proto $scheme; \
-    } \
-    \
     location /health { \
         access_log off; \
-        return 200 "healthy\n"; \
+        return 200 "healthy"; \
         add_header Content-Type text/plain; \
     } \
     \
     gzip on; \
     gzip_vary on; \
     gzip_min_length 1024; \
-    gzip_proxied expired no-cache no-store private must-revalidate max-age=0 auth; \
-    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/json application/xml+rss; \
+    gzip_proxied any; \
+    gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml+rss; \
 }' > /etc/nginx/conf.d/default.conf
 
 # Expose port 80
