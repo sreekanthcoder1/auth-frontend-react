@@ -22,32 +22,11 @@ FROM nginx:alpine
 # Install curl for health checks
 RUN apk add --no-cache curl
 
-# Copy custom nginx configuration
+# Copy built application
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Create nginx configuration for React Router
-RUN echo 'server { \
-    listen 80; \
-    server_name localhost; \
-    root /usr/share/nginx/html; \
-    index index.html; \
-    \
-    location / { \
-        try_files $uri $uri/ /index.html; \
-    } \
-    \
-    location /health { \
-        access_log off; \
-        return 200 "healthy"; \
-        add_header Content-Type text/plain; \
-    } \
-    \
-    gzip on; \
-    gzip_vary on; \
-    gzip_min_length 1024; \
-    gzip_proxied any; \
-    gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml+rss; \
-}' > /etc/nginx/conf.d/default.conf
+# Copy nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
